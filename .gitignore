@@ -7,3 +7,7 @@ __pycache__/
 myenv/
 .vscode/
 app_watchdog.py
+logs/
+airflow-webserver.pid
+airflow.db
+webserver_config.py
