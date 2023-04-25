@@ -6,42 +6,10 @@ import os
 from flask import request
 import pandas as pd
 import numpy as np
-
 from sqlalchemy import create_engine
 import psycopg2
 @app.route('/upload', methods=['POST'])
-# def upload_file():
 
-#     columns_to_check =['ResponseId', 'MainBranch', 'Employment', 'RemoteWork','CodingActivities']
-#     file = request.files['file']
-#     file_extension = os.path.splitext(file.filename)[1]
-#     if file_extension!='.csv':
-#         return 'Failed' 
-
-#     df = pd.read_csv(file)
-
-#     if not all(col in df.columns for col in columns_to_check):
-        
-#         return 'Failed'
-#     # file.save('/home/neo/Downloads/flask-pandas/'+ file.filename)
-
-#     df['job_id'] = np.random.choice(np.arange(1, 100000), size=len(df), replace=False)
-#     columns_to_check.append('job_id')
-
-#     table_df = df.loc[:,columns_to_check]
-
-#     connection_string = "postgresql://ifthikar:ifthik*123@localhost/pandas"
-#     engine = create_engine(connection_string)
-
-#     table_df.to_sql('Employee', engine)
-
-
-
-#     return 'OK'
-
-
-# if __name__ == '__main__':
-#     app.run(debug=True)
 def upload_file():
     try:
         # List of columns to check for in the uploaded CSV file
@@ -63,8 +31,8 @@ def upload_file():
             raise Exception('Required columns not found in CSV file')
 
         # Generate a random job ID for each row in the dataframe
-        df['job_id'] = np.random.choice(np.arange(1, 100000), size=len(df), replace=False)
-        columns_to_check.append('job_id')
+        df['JobId'] = np.random.choice(np.arange(1, 100000), size=len(df), replace=False)
+        columns_to_check.append('JobId')
 
         # Create a new dataframe with only the required columns
         table_df = df.loc[:, columns_to_check]
